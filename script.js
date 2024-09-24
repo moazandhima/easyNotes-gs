@@ -1,5 +1,6 @@
 const noteInput = document.getElementById("noteInput");
 const notesDiv = document.getElementById("notesDiv");
+const zeroNotes = document.getElementById("zeroNotes");
 var notesArray = [];
 
 
@@ -34,6 +35,12 @@ function showNotes() {
     
     getNotes();
 
+    if(notesArray.length > 0) {
+        zeroNotes.style.display = "none";
+    } else {
+        zeroNotes.style.display = "block";
+    }
+
     notesDiv.innerHTML = "";
 
     for (let index = 0; index < notesArray.length; index++) {
@@ -47,6 +54,15 @@ function showNotes() {
 
         const deleteIcon = document.createElement("i");
         deleteIcon.className = "bi bi-trash3";
+        deleteIcon.onclick = function () {
+
+            if ( confirm("Are you sure to delete note?") == true ) {
+                notesArray.splice(index, 1);
+                saveNotes();
+                showNotes();
+            }
+            
+        }
         newDiv.appendChild(deleteIcon);
 
         notesDiv.appendChild(newDiv);

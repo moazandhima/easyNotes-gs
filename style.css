@@ -118,4 +118,11 @@ textarea {
 
 #notesDiv div i {
     font-size: 35px;
+    transition: 0.5s;
+}
+
+#notesDiv div i:hover {
+    cursor: pointer;
+    color: red;
+    font-size: 40px;
 }
